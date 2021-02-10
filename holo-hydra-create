@@ -257,7 +257,7 @@ infect() {
 }
 
 [[ -z "$PROVIDER" ]]    && PROVIDER="digitalocean"
-[[ -z "$NIX_CHANNEL" ]] && NIX_CHANNEL="nixos-19.09"
+[[ -z "$NIX_CHANNEL" ]] && NIX_CHANNEL="nixos-20.09"
 [ "$PROVIDER" = "digitalocean" ] && doNetConf=y # digitalocean requires detailed network config to be generated
 
 prepareEnv
