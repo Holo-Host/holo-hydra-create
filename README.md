@@ -16,13 +16,13 @@ First import a file `hydra-keystore.enc` to server's `~/` dir. The file is encry
 openssl enc -aes-256-cbc -salt -in hydra-keystore-template -out hydra-keystore.enc
 ```
 
-Once `hydra-keystore.enc` is in place run 
+Once `hydra-keystore.enc` is in place run
 ```bash
 holo-hydra-restore
 ```
 and watch terminal output for prompts.
 
-You should see the line `Hydra restored from backup successfully`. From now on wait ~1h for hydra to finish evaluations or watch logs with `journalctl -f -u hydra-evaluator` until evaluations are done. 
+You should see the line `Hydra restored from backup successfully`. From now on wait ~1h for hydra to finish evaluations or watch logs with `journalctl -f -u hydra-evaluator` until evaluations are done.
 
 ## Updating TLS certs
 
@@ -34,6 +34,26 @@ DNS entry `hydra.holo.host` and `holoportbuild.holo.host` are both pointing to L
 > IMPORTANT: Hydra-load-balancer can be pointing only to one instance of Hydra at the same time, otherwise Hydra will enter inconsistent state.
 
 A new instance Status will be showing as `Down` for the first 20s, afterwards it will turn to `Healthy`. During that period `hydra.holo.host` will be down.
+
+## Minions
+
+Hydra needs 2 minions - arm64 and darwin machines. Both of them need to be set up as separate servers.
+
+### Minion 1 - ARM
+
+To create minion-1 do what follows:
+ - In Holo AWS account (Ohio us-east-2) find AMI "Hydra ARM minion"
+ - Based on this AMI launch an instance:
+   - t4g.xlarge
+   - 200GB General Purpose SSD
+   - port 22 open to 0.0.0.0
+   - you can choose any key at final dialog
+
+once instance is ready you can ssh to it with any key listed in `<holo-nixpkgs/profiles/logical/holo/default.nix>`. Make sure to change DNS entry `hydra-minion-1.holo.host` and you're good to go.
+
+### Minion 2 - Darwin
+
+TBD
 
 ## Acknowledgements
 
