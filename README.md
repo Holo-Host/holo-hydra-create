@@ -41,7 +41,7 @@ Hydra needs 2 minions - arm64 and darwin machines. Both of them need to be set u
 
 ### Minion 1 - ARM
 
-To create minion-1 do what follows:
+#### To create minion-1 do what follows:
  - In Holo AWS account (Ohio us-east-2) find AMI "Hydra ARM minion"
  - Based on this AMI launch an instance:
    - t4g.xlarge
@@ -53,7 +53,26 @@ once instance is ready you can ssh to it with any key listed in `<holo-nixpkgs/p
 
 ### Minion 2 - Darwin
 
-TBD
+Currently minion-2 is hosted on MacStadium.
+
+#### Access existing machine:
+ - users listed in `<holo-nixpkgs/profiles/logical/holo/default.nix>` can ssh into minion-2 using `ssh administrator@hydra-minion-2.holo.host -i <your_ssh_key>`
+ - everybody else can use VNC to connect to the screen of macOs. Login credentials should be obtained from TechOps
+
+ #### To create minion-2 do what follows:
+ - create new machine on MacStadium
+ - follow instructions to connect to it over VNC
+ - open terminal and via CLI copy keys from `<holo-nixpkgs/profiles/logical/holo/default.nix>` into `/Users/administrator/.ssh/authorized_keys`
+ - [install nix](https://nixos.org/download.html)
+ - add to `/etc/nix/nix.conf`
+ ```
+ build-users-group = nixbld
+ trusted-users = administrator
+ ```
+ - reboot
+ - update DNS entry for `hydra-minion-2.holo.host`
+
+In case macs from MacStadium were not available you can convert any Mac laptop into minion, as long as it has a static IP and can be accessed over ssh from outside. Just follow above instructions.
 
 ## Acknowledgements
 
