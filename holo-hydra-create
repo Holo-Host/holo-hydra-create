@@ -8,8 +8,8 @@ makeConf() {
   # NB <<"EOF" quotes / $ ` in heredocs, <<EOF does not
   mkdir -p /etc/nixos
   # Prevent grep for sending error code 1 (and halting execution) when no lines are selected : https://www.unix.com/man-page/posix/1P/grep
-  local IFS=$'\n' 
-  for trypath in /root/.ssh/authorized_keys $HOME/.ssh/authorized_keys; do 
+  local IFS=$'\n'
+  for trypath in /root/.ssh/authorized_keys $HOME/.ssh/authorized_keys; do
       [[ -r "$trypath" ]] \
       && keys=$(sed -E 's/^.*((ssh|ecdsa)-[^[:space:]]+)[[:space:]]+([^[:space:]]+)([[:space:]]*.*)$/\1 \3\4/' "$trypath") \
       && break
@@ -227,7 +227,7 @@ infect() {
 
   nix-channel --remove nixpkgs
   nix-channel --add "https://nixos.org/channels/$NIX_CHANNEL" nixos
-  nix-channel --add https://hydra.holo.host/channel/custom/holo-nixpkgs/hydra/holo-nixpkgs
+  nix-channel --add https://hydra.holo.host/channel/custom/holo-nixpkgs/hydra-19.09/holo-nixpkgs
   nix-channel --update
 
   export NIXOS_CONFIG=/etc/nixos/configuration.nix
