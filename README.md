@@ -74,6 +74,10 @@ Currently minion-2 is hosted on MacStadium.
 
 In case macs from MacStadium were not available you can convert any Mac laptop into minion, as long as it has a static IP and can be accessed over ssh from outside. Just follow above instructions.
 
+## Creating database backup
+
+Hydra stores history of builds in postgres db. If you feel that you need to back up that kind of data `holo-hydra-create-backup` will create backup and upload it to wasabi. Prior to running it fill out `AWS_SECRET_ACCESS_KEY` and `RESTIC_PASSWORD` in a script file.
+
 ## Acknowledgements
 
 Based on [nixos-infect](https://github.com/elitak/nixos-infect/blob/master/nixos-infect).
