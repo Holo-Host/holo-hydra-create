@@ -1,0 +1,13 @@
+#! /usr/bin/env bash
+
+set -o pipefail
+
+unset HISTFILE
+export RESTIC_REPOSITORY="s3:https://s3.wasabisys.com/holo-hydra-backup"
+export AWS_ACCESS_KEY_ID="ZD2FO9FZ1QT8BU6VTVPW"
+export AWS_SECRET_ACCESS_KEY="***"
+export RESTIC_PASSWORD="***"
+restic init
+pg_dump -U hydra hydra --clean | restic backup --stdin --stdin-filename hydra-master.bak
+
+echo "Hydra backup created and uploaded to wasabi successfully"
