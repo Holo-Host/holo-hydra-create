@@ -25,6 +25,8 @@ makeConf() {
     <holo-nixpkgs/profiles/logical/holo/hydra/master>
   ];
 
+  system.stateVersion = "22.11";
+
   boot.cleanTmpDir = true;
   networking.hostName = "$(hostname)";
   networking.firewall.allowPing = true;
