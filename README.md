@@ -6,7 +6,7 @@ Consulted: None
 Informed: @zo-el
 
 ## Creating server
-First create new droplet on Digital Ocean with minimum 16GB of RAM and `Ubuntu 16.04 x64` operating system. Use your ssh key for authentication. Choose a datacenter region `Amsterdam 3` and VPC Network `Hydra-ams3`. Also enable ipv6.
+First create new droplet on Digital Ocean with minimum 16GB of RAM and `Ubuntu 20.04 x64` operating system. Use your ssh key for authentication. Choose a datacenter region `Amsterdam 3` and VPC Network `Hydra-ams3`. Also enable ipv6.
 
 Ssh into your new droplet. Exec in shell:
 ```bash

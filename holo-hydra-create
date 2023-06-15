@@ -227,7 +227,7 @@ infect() {
 
   nix-channel --remove nixpkgs
   nix-channel --add "https://nixos.org/channels/$NIX_CHANNEL" nixos
-  nix-channel --add https://hydra.holo.host/channel/custom/holo-nixpkgs/hydra-19.09/holo-nixpkgs
+  nix-channel --add https://hydra.holo.host/channel/custom/holo-nixpkgs/develop/holo-nixpkgs
   nix-channel --update
 
   export NIXOS_CONFIG=/etc/nixos/configuration.nix
@@ -257,7 +257,7 @@ infect() {
 }
 
 [[ -z "$PROVIDER" ]]    && PROVIDER="digitalocean"
-[[ -z "$NIX_CHANNEL" ]] && NIX_CHANNEL="nixos-20.09"
+[[ -z "$NIX_CHANNEL" ]] && NIX_CHANNEL="nixos-22.11"
 [ "$PROVIDER" = "digitalocean" ] && doNetConf=y # digitalocean requires detailed network config to be generated
 
 prepareEnv
