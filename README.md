@@ -6,7 +6,7 @@ Consulted: None
 Informed: @zo-el
 
 ## Creating server
-First create new droplet on Digital Ocean with minimum 16GB of RAM and `Ubuntu 16.04 x64` operating system. Use your ssh key for authentication. Choose a datacenter region `Amsterdam 3` and VPC Network `Hydra-ams3`. Also enable ipv6.
+First create new droplet on Digital Ocean with minimum 16GB of RAM and `Ubuntu 20.04 x64` operating system. Use your ssh key for authentication. Choose a datacenter region `Amsterdam 3` and VPC Network `Hydra-ams3`. Also enable ipv6.
 
 Ssh into your new droplet. Exec in shell:
 ```bash
@@ -28,14 +28,6 @@ holo-hydra-restore
 and watch terminal output for prompts.
 
 You should see the line `Hydra restored from backup successfully`. From now on wait ~1h for hydra to finish evaluations or watch logs with `journalctl -f -u hydra-evaluator` until evaluations are done.
-
-> Important! Recently the way github token is read by hydra has changed. Therefore one additional step is needed:
-> Create file `/var/lib/hydra/github_authorizations.conf` with the following content:
-```
-<github_authorization>
-  Holo-Host = token ghp_****
-</github_authorization>
-```
 
 ## Updating TLS certs
 
