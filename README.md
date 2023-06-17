@@ -29,6 +29,13 @@ and watch terminal output for prompts.
 
 You should see the line `Hydra restored from backup successfully`. From now on wait ~1h for hydra to finish evaluations or watch logs with `journalctl -f -u hydra-evaluator` until evaluations are done.
 
+## Promtail config
+
+Promtail service sends logs from Hydra to Grafana. Make sure to place API token in a file:
+```
+-r-------- 1 promtail promtail 118 Jun 17 20:23 /var/lib/promtail-auth/api-token
+```
+
 ## Updating TLS certs
 
 There are two urls served from Hydra server: `hydra.holo.host` and `holoportbuild.holo.host`, both via https. Before you switch DNS to newly created machine make sure to copy content of `/var/lib/acme/hydra.holo.host/` and `/var/lib/acme/holoportbuild.holo.host/` from old working Hydra to the one currently created. Once you copy those make sure to restart `nginx.servce` on new Hydra.
