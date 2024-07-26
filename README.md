@@ -29,6 +29,10 @@ and watch terminal output for prompts.
 
 You should see the line `Hydra restored from backup successfully`. From now on wait ~1h for hydra to finish evaluations or watch logs with `journalctl -f -u hydra-evaluator` until evaluations are done.
 
+## Adding github credentials for evaluator
+
+Somewhere down the line of Hydra development there was a bug introduced, where `hydra-eval-jobs` is unable to authorize itself to gitub to read from private repos. So you have to enter those credentials manually as described in [this section](https://github.com/Holo-Host/holo-nixpkgs/issues/2235#issuecomment-2252452961).
+
 ## Promtail config
 
 Promtail service sends logs from Hydra to Grafana. Make sure to place API token in a file:
